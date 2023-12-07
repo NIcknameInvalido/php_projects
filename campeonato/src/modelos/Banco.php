@@ -11,13 +11,22 @@
             return $sql_conn;
         }
 
-        public static function executarSql($sql){
+        public static function obterResultadoDoSql($sql){
             try {
                 $sql_conn = static::conectarAoBanco();
-                return $sql_conn->query($sql);
+                $resultado = $sql_conn->query($sql);
+                $sql_conn->close();
+                return $resultado;
             } catch (Exception $excp) {
                 return $excp->getMessage();
             }
+        }
+
+        public static function executarSql($sql){
+            $sql_conn = static::conectarAoBanco();
+            if(mysqli_query($sql_conn, $sql)){
+                throw new Exception((mysqli_error($sql_conn)));
+            }$sql_conn->close();
         }
     }
 

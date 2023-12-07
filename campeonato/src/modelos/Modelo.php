@@ -15,8 +15,11 @@
                 foreach ($arr as $chave => $valores) {
                     $this->$chave = $valores;
                 }
+                
             }
         }
+
+        //métodos mágicos
         public function __get($chave){
             return $this->valores[$chave];
         }
@@ -50,13 +53,10 @@
             }
             return $obejtos;
         }
-        
-
         //função para construir um select simples
         public static function obterDeUmSelect($filtros = [], $colunas = "*"){
             $sql = "SELECT ";
-        
-            if($colunas == "*"){
+            if($colunas === "*"){
                 $sql .= $colunas;
             }else{
                 foreach($colunas as $col){
@@ -68,10 +68,24 @@
             if($filtros){
                 $sql.= static::formatarFiltros($filtros);
             }
-            $resultados = Banco::executarSql($sql);
-            return $resultados;
-
+            $resultados = Banco::obterResultadoDoSql($sql);
+            return $resultados; 
+        }
+        public function insertInto(){
+            $insert = "INSERT INTO ".static::$nome_tabela .
+            " (" . implode(",", static::$colunas).")" . " VALUES ( ";
             
+            $this->id = 0;
+            foreach(static::$colunas as $col){
+                $insert.= static::formatarValor($this->$col).",";
+            }
+            $insert[strlen($insert) - 1] = ")";
+            
+            try{
+                Banco::executarSql($insert);
+            }catch(Exception $excp){
+                echo $excp->getMessage();
+            }
         }
         //funcação para formatar os filtros
         public static function formatarFiltros($filtros){
