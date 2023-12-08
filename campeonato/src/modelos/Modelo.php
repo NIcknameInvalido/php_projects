@@ -4,7 +4,7 @@
         protected static $colunas = [];
         protected  $valores = [];
 
-        function __construct($arr){
+        function __construct($arr = []){
             $this->loadFromArray($arr);
         }
 
@@ -24,8 +24,11 @@
         
         public function __set($chave, $valor){
             $this->valores[$chave] = $valor;
-        }   
-
+        }
+        public function getColunasT(){
+            return static::$colunas;
+        }
+        
         public static function obterTodosRegistros($colunas = "*"){
             $obejtos = [];
             $filtros = [];
@@ -40,16 +43,17 @@
             return $obejtos;
         }
         public static function obterRegistroUnico($filtros, $colunas = "*"){
-            $obejto = "";
+            $obejto = [];
             $resultado = static::obterDeUmSelect($filtros, $colunas);
 
             if($resultado){
                 $class = get_called_class();
                 while($linha = $resultado->fetch_assoc()){
-                    array_push($obejtos, new $class($linha));
+                    array_push($obejto, new $class($linha));
                 }
             }
-            return $obejtos;
+            
+            return $obejto;
         }
         //função para construir um select simples
         public static function obterDeUmSelect($filtros = [], $colunas = "*"){
@@ -62,13 +66,17 @@
                 }
                 $sql[strlen($sql) - 1] = " ";
             }
-            $sql .= "FROM ". static::$nome_tabela;
+            $sql .= " FROM ". static::$nome_tabela;
             if($filtros){
                 $sql.= static::formatarFiltros($filtros);
             }
             $resultados = Banco::obterResultadoDoSql($sql);
             return $resultados; 
         }
+
+
+
+
         public function insertInto(){
             $insert = "INSERT INTO ".static::$nome_tabela .
             " (" . implode(",", static::$colunas).")" . " VALUES ( ";

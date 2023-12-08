@@ -9,5 +9,9 @@
             'dt_nascimento'
         ];
         protected static $nome_tabela = 'Jogador';
-    }  
+        
+    }
+
+  
+
 ?>
