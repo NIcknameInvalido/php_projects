@@ -1,5 +1,4 @@
 <?php
-
     class Banco{
         public static function conectarAoBanco(){
             $caminho = realpath(dirname(__FILE__) . '/../env.ini');

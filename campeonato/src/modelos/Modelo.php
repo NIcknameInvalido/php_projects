@@ -1,6 +1,4 @@
 <?php
-    require_once('Banco.php');
-
     class Modelo {
         protected static $nome_tabela = '';
         protected static $colunas = [];
