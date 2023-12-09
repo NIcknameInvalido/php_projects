@@ -23,9 +23,12 @@
 
         public static function executarSql($sql){
             $sql_conn = static::conectarAoBanco();
-            if(mysqli_query($sql_conn, $sql)){
+            if(!mysqli_query($sql_conn, $sql)){
                 throw new Exception((mysqli_error($sql_conn)));
-            }$sql_conn->close();
+            }
+            $id = $sql_conn->insert_id;
+            $sql_conn->close();
+            return $id;
         }
     }
 

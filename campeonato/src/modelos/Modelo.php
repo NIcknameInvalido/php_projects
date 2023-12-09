@@ -88,7 +88,8 @@
             $insert[strlen($insert) - 1] = ")";
             
             try{
-                Banco::executarSql($insert);
+               $this->id = Banco::executarSql($insert);
+               return $this->id;
             }catch(Exception $excp){
                 echo $excp->getMessage();
             }

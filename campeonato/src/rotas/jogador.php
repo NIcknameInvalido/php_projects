@@ -50,7 +50,9 @@ use function PHPSTORM_META\type;
             }
             break;
         case 'POST':
-            // Lógica para manipular requisições POST
+            $jogador = new Jogador($_POST);
+            $id = $jogador->insertInto();
+            echo $id;
             break;
         case 'PUT':
             // Lógica para manipular requisições PUT

@@ -9,8 +9,4 @@
     include(MODELOPATH."\Banco.php");
     include(MODELOPATH."\Modelo.php");
     include(MODELOPATH."\Jogador.php");
-    
-    
-
-    echo "Ok";
 ?>
