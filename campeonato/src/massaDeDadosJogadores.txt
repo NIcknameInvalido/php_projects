@@ -1,8 +1,0 @@
-['nome' => 'Sergio Ramos', 'id' => '78239485921', 'idade' => 35, 'apelido' => 'El Capitán', 'data de nascimento' => '1986-03-30'],
-['nome' => 'Gareth Bale', 'id' => '56478293201', 'idade' => 32, 'apelido' => 'O Expresso de Cardiff', 'data de nascimento' => '1989-07-16'],
-['nome' => 'Raheem Sterling', 'id' => '12895467203', 'idade' => 27, 'apelido' => 'Raz', 'data de nascimento' => '1994-12-08'],
-['nome' => 'Paul Pogba', 'id' => '76423981047', 'idade' => 28, 'apelido' => 'Pogboom', 'data de nascimento' => '1993-03-15'],
-['nome' => 'Sadio Mané', 'id' => '42961875902', 'idade' => 29, 'apelido' => 'Mané', 'data de nascimento' => '1992-04-10'],
-['nome' => 'Virgil van Dijk', 'id' => '87624591023', 'idade' => 30, 'apelido' => 'Big Virg', 'data de nascimento' => '1991-07-08'],
-['nome' => 'Bruno Fernandes', 'id' => '12356789201', 'idade' => 27, 'apelido' => 'The Magician', 'data de nascimento' => '1994-09-08'],
-['nome' => 'Luis Suárez', 'id' => '89012753456', 'idade' => 35, 'apelido' => 'El Pistolero', 'data de nascimento' => '1987-01-24']

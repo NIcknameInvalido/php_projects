@@ -45,7 +45,7 @@
 
 -- SELECT nome, apelido, YEAR(GETDATE()) - YEAR(dt_nascimento) as "Idade"  FROM cpn.Jogador;
 
-
+--MYSQL
 USE `campeonato`;
 
 CREATE TABLE Jogador (
