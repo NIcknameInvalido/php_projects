@@ -55,6 +55,7 @@
             
             return $obejto;
         }
+
         //função para construir um select simples
         public static function obterDeUmSelect($filtros = [], $colunas = "*"){
             $sql = "SELECT ";
@@ -73,10 +74,6 @@
             $resultados = Banco::obterResultadoDoSql($sql);
             return $resultados; 
         }
-
-
-
-
         public function insertInto(){
             $insert = "INSERT INTO ".static::$nome_tabela .
             " (" . implode(",", static::$colunas).")" . " VALUES ( ";
