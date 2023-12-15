@@ -36,6 +36,7 @@
 
             if($resultado){
                 $class = get_called_class();
+                print_r($resultado);
                 while($linha = $resultado->fetch_assoc()){
                     array_push($obejtos, new $class($linha));
                 }

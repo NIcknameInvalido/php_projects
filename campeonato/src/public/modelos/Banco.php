@@ -1,12 +1,14 @@
 <?php
     class Banco{
         public static function conectarAoBanco(){
-            $caminho = realpath(dirname(__FILE__) . '/../env.ini');
+            $caminho = dirname(realpath('../modelos/'))."/env.ini";
             $configuracoes = parse_ini_file($caminho);
             $sql_conn = new mysqli($configuracoes['host'],$configuracoes['username'], $configuracoes['password'], $configuracoes['dbname']);
             if($sql_conn->connect_error){
+                echo "ok";
                 die("Erro: " . $sql_conn->connect_error);
             }
+            
             return $sql_conn;
         }
 

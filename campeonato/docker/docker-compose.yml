@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: campeonato_app
+    restart: always
+    working_dir: /var/www
+    volumes:
+     - ../src:/var/www
+  nginx:
+    image: nginx:1.24.0-alpine-slim
+    container_name: campeonato_nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ../src:/var/www
+      - ./nginx:/etc/nginx/conf.d
