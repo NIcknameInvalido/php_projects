@@ -1,0 +1,30 @@
+body{
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 64px 1fr 64px;
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer"
+    ;
+    height: 100vh;
+    margin: 0;
+}
+
+header.header{
+    grid-area: header;
+}
+.navbar{
+    padding: 10px;
+}
+
+main.content{
+    grid-area: content;
+}
+footer.footer{
+    grid-area: footer;
+    background-color: blueviolet;
+}
+p{
+   color: red; 
+}

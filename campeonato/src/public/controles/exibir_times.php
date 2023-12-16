@@ -1,6 +1,6 @@
 <? 
     include('../configuracoes/config.php');
-    
-    $time = Time::obterTodosRegistros();
-    carregarInterface('exibir_times', ['times' => $time]);
+    $erro = "Chegou aqui";
+    $times = Time::obterTodosRegistros();
+    carregarInterface('exibir_times', ['times' => $times, 'execao' => $erro]);
 ?>
