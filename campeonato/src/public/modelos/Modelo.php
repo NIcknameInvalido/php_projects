@@ -25,7 +25,7 @@
         public function __set($chave, $valor){
             $this->valores[$chave] = $valor;
         }
-        public function getColunasT(){
+        public function getColunas(){
             return static::$colunas;
         }
         
@@ -36,7 +36,6 @@
 
             if($resultado){
                 $class = get_called_class();
-                print_r($resultado);
                 while($linha = $resultado->fetch_assoc()){
                     array_push($obejtos, new $class($linha));
                 }

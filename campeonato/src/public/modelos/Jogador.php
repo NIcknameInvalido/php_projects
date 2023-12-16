@@ -4,7 +4,6 @@
             'id', 
             'nome',
             'cpf',
-            'idade', 
             'apelido',
             'dt_nascimento'
         ];

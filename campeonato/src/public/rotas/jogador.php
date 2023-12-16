@@ -29,7 +29,7 @@ use function PHPSTORM_META\type;
                     $valores = Jogador::obterRegistroUnico(converterGetParaChaveValor($_GET));
                     $jogador = new Jogador();
                     $resposta = [];
-                    foreach($jogador->getColunasT() as $col){
+                    foreach($jogador->getColunas() as $col){
                         $resposta[$col] = $valores[0]->$col;
                     }
                     echo json_encode($resposta);  
@@ -40,7 +40,7 @@ use function PHPSTORM_META\type;
                     echo(count($valores));
                     for($i = 0 ; $i < count($valores) ; $i++){
                         $temp = [];
-                        foreach($jogador->getColunasT() as $col){
+                        foreach($jogador->getColunas() as $col){
                             $temp[$col] = $valores[$i]->$col;
                         }
                         array_push($resposta, $temp);     

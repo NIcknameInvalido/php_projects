@@ -1,6 +1,10 @@
-version: '3.8'
+version: '3'
+
+networks:
+  nginx-php8-mysql_8:
 
 services:
+
   app:
     build:
       context: ./
@@ -10,6 +14,9 @@ services:
     working_dir: /var/www
     volumes:
      - ../src:/var/www
+    networks:
+     - nginx-php8-mysql_8
+
   nginx:
     image: nginx:1.24.0-alpine-slim
     container_name: campeonato_nginx
@@ -19,3 +26,21 @@ services:
     volumes:
       - ../src:/var/www
       - ./nginx:/etc/nginx/conf.d
+    networks:
+     - nginx-php8-mysql_8
+    links:
+      - mysql_8
+    
+  mysql_8:
+    image: mysql:latest
+    container_name: campeonato_db
+    restart: always
+    ports:
+      - "4306:3306"
+    volumes:
+      - "./mysql:/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+    networks:
+     - nginx-php8-mysql_8

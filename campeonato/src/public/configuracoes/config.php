@@ -3,16 +3,26 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     
-    define("MODELOPATH", dirname(realpath('../modelos/')."/modelos"));
-    define("CONFIGPATH",  dirname(realpath('../configuracoes')."/configuracoes"));
-    define("VIEWPATH",  dirname(realpath('../interfaces')."/configuracoes"));
+    define("MODELO", dirname(realpath('../modelos/')."/modelos"));
+    define("CONFIGURACOES",  dirname(realpath('../configuracoes')."/configuracoes"));
+    define("INTERFACES",  dirname(realpath('../interfaces')."/configuracoes"));
+    define("CONTROLES",  dirname(realpath('../interfaces')."/configuracoes"));
     
-    include(MODELOPATH."/Banco.php");
-    include(MODELOPATH."/Modelo.php");
-    include(MODELOPATH."/Jogador.php");
+    include(MODELO."/Banco.php");
+    include(MODELO."/Modelo.php");
+    include(MODELO."/Jogador.php");
+    include(MODELO."/Time.php");
 
-   function carregarInterface($interface){
-        $caminhoArquivo = VIEWPATH . "/" . $interface. ".php";
+   function carregarInterface($interface, $dados = []){
+        $caminhoArquivo = INTERFACES . "/" . $interface. ".php";
+        
+        if(count($dados) > 0){
+            foreach ($dados as $chave => $valor) {
+                if(strlen($chave)){
+                    ${$chave} = $valor;
+                }
+            };
+        }
         require_once($caminhoArquivo);
     }
 ?>
