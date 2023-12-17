@@ -20,8 +20,8 @@
         if(isset($_POST['timeId']) > 0 && isset($_POST['dt_inicio'])){
             $contrato = "";
             $jogador = new Jogador([
-               'nome' => $_POST['nome'], 'cpf' => $_POST['cpf'], 
-                'apelido' => $_POST['apelido'], 'dt_nascimento' => $_POST['dt_nascimento']
+               'nome' => $_POST['nome'], 'sobrenome' => $_POST['sobrenome'], 'cpf' => $_POST['cpf'], 
+                 'dt_nascimento' => $_POST['dt_nascimento']
             ]);
             if(isset($jogador)){
                 $jogadorId = $jogador->insertInto();
