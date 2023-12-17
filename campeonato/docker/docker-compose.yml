@@ -21,6 +21,8 @@ services:
     image: nginx:1.24.0-alpine-slim
     container_name: campeonato_nginx
     restart: always
+    depends_on:
+      - mysql_8
     ports:
       - "8000:80"
     volumes:
@@ -37,10 +39,14 @@ services:
     restart: always
     ports:
       - "4306:3306"
-    volumes:
-      - "./mysql:/lib/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: campeonato
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dev_nikollas
+      MYSQL_PASSWORD: nikollas
+      MYSQL_HOST: "*"
+    volumes:
+      - ./mysql:/lib/mysql
+      - ./dump:/docker-entrypoint-initdb.d
     networks:
      - nginx-php8-mysql_8
