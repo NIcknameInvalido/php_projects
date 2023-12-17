@@ -1,12 +1,11 @@
 <?php 
     include('../configuracoes/config.php');
+    $times = Time::obterTodosRegistros();
     
-    carregarInterface('cadastrar_jogadores');
-
-    if($_POST){
-        $jogador = new Jogador($_POST);
-        print_r($jogador);
-    }else{
-        echo "A comunicação falhou";
-    }
+    // if($_POST){
+    //     $jogador = new Jogador($_POST);
+    //     print_r($jogador);
+        
+    // }
+    carregarInterface('cadastrar_jogadores', ['times'=> $times]);
 ?>

@@ -1,5 +1,4 @@
 <?php require('cabecalho.php') ?>
-<main class="content d-flex align-items-center px-5">
     <table class="table">
         <thead>
             <tr>
@@ -20,5 +19,4 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-</main>
 <?php require('rodape.php') ?>

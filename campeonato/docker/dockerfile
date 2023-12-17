@@ -1,12 +1,14 @@
+# Use a imagem oficial do PHP com FPM
 FROM php:8.3.0-fpm
 
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    zip \
-    vim \
-    unzip
+# Instale as dependências necessárias
+RUN apt-get update && apt-get install -y git curl zip vim unzip libpq-dev
 
+# Instale as extensões PHP necessárias
+RUN docker-php-ext-install pdo pdo_pgsql mysqli
+
+# Habilite as extensões PHP
+RUN docker-php-ext-enable mysqli
+
+# Defina o diretório de trabalho para o Nginx
 WORKDIR /var/www
-
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli

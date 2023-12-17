@@ -1,5 +1,4 @@
 <?php 
-    
     class Time extends Modelo{
         protected static $colunas = [
             'id',

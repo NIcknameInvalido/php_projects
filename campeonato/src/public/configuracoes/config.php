@@ -12,6 +12,7 @@
     include(MODELO."/Modelo.php");
     include(MODELO."/Jogador.php");
     include(MODELO."/Time.php");
+    include(MODELO."/Contrato.php");
 
    function carregarInterface($interface, $dados = []){
         $caminhoArquivo = INTERFACES . "/" . $interface. ".php";

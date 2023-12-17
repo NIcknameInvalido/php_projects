@@ -39,3 +39,4 @@
             </div>
         </nav>
     </header>
+    <main class="content d-flex align-items-center justify-content-center px-5">

@@ -58,14 +58,14 @@ CREATE TABLE Jogador (
 );
 
 CREATE TABLE Time (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMEN PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     sigla VARCHAR(11) NOT NULL UNIQUE,
     ano_fundacao INT NOT NULL
 );
 
 CREATE TABLE Contrato (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMEN PRIMARY KEY,
     dt_inicio DATE NOT NULL,
     dt_fim DATE,
     id_jogador INT,
