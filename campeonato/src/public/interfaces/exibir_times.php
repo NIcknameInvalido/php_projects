@@ -1,4 +1,4 @@
-<?php require('cabecalho.php') ?>
+<?php require('componentes/cabecalho.php') ?>
     <table class="table">
         <thead>
             <tr>
@@ -19,4 +19,4 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-<?php require('rodape.php') ?>
+<?php require('componentes/rodape.php') ?>

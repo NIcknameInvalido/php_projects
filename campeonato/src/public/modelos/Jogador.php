@@ -3,8 +3,8 @@
         protected static $colunas = [
             'id', 
             'nome',
+            'sobrenome',
             'cpf',
-            'apelido',
             'dt_nascimento'
         ];
         protected static $nome_tabela = 'Jogador';

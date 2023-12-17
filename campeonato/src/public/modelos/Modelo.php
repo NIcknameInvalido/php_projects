@@ -43,17 +43,12 @@
             return $obejtos;
         }
         public static function obterRegistroUnico($filtros, $colunas = "*"){
-            $obejto = [];
             $resultado = static::obterDeUmSelect($filtros, $colunas);
-
-            if($resultado){
+            if($resultado->num_rows == 1){
                 $class = get_called_class();
-                while($linha = $resultado->fetch_assoc()){
-                    array_push($obejto, new $class($linha));
-                }
+                $objeto = new $class($resultado->fetch_assoc());
+                return $objeto;
             }
-            
-            return $obejto;
         }
 
         //função para construir um select simples
@@ -74,6 +69,11 @@
             $resultados = Banco::obterResultadoDoSql($sql);
             return $resultados; 
         }
+        //função para construir um select avançado
+        public static function selectComplexo($filtros = [], $colunas = "*"){
+           // 
+        }
+
         public function insertInto(){
             $insert = "INSERT INTO ".static::$nome_tabela .
             " (" . implode(",", static::$colunas).")" . " VALUES ( ";
@@ -107,7 +107,7 @@
         }
 
         public static function formatarValor($valor){
-            if(!is_numeric($valor)){
+            if(!is_numeric($valor) AND $valor != "NULL"){
                 return "'".$valor."'";
             }
             return $valor;
