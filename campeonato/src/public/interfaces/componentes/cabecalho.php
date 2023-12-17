@@ -34,7 +34,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="../controles/exibir_times.php">Gerenciar Times</a></li>
-                            <li><a class="dropdown-item" href="..">Gerenciar Jogadores</a></li>
+                            <li><a class="dropdown-item" href="../controles/exibir_jogadores.php">Gerenciar Jogadores</a></li>
                         </ul>
                     </li>
                 </ul>
