@@ -2,7 +2,6 @@
 <form class="col-12 d-flex align-items-center px-5" action="../controles/cadastrar_jogadores.php" method="post">
     <div class="container mt-4">
         <h1 class="">Cadastro de jogadores</h1>
-
         <div class="col">
             <form action="../controles/jogadores.php" method="post">
                 <div class="row">

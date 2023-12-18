@@ -4,7 +4,6 @@ networks:
   nginx-php8-mysql_8:
 
 services:
-
   app:
     build:
       context: ./

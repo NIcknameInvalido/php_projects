@@ -1,9 +1,19 @@
 CREATE DATABASE IF NOT EXISTS campeonato;
 USE campeonato;
 
-
+-- Drop Resultado
+DROP TABLE IF EXISTS Resultado;
+-- Drop Jogo
+DROP TABLE IF EXISTS Jogo;
+-- Drop Edicao
+DROP TABLE IF EXISTS Edicao;
+-- Drop Campeonato
+DROP TABLE IF EXISTS Campeonato;
+-- Drop Contrato
 DROP TABLE IF EXISTS Contrato;
+-- Drop Jogador
 DROP TABLE IF EXISTS Jogador;
+-- Drop Time
 DROP TABLE IF EXISTS Time;
 
 
@@ -13,7 +23,6 @@ CREATE TABLE IF NOT EXISTS Jogador (
     nome VARCHAR(100) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
     cpf VARCHAR(11) NOT NULL UNIQUE,
-    apelido VARCHAR(50),
     dt_nascimento DATE NOT NULL
 );
 
@@ -34,17 +43,35 @@ CREATE TABLE IF NOT EXISTS  Contrato (
     FOREIGN KEY (id_time) REFERENCES Time(id)
 );
 
-INSERT INTO Jogador (nome, cpf, apelido, dt_nascimento) VALUES
-('Ronaldo Miranda', '58463588800','ronaldinho','1980-08-12'),
-#('Neymar Jr', '12345678901','neymarjr','1992-02-05'),
-#('Lionel Messi', '98765432109','leomessi','1987-06-24'),
-#('Cristiano Ronaldo', '45678901234','cristiano7','1985-02-05'),
-#('Kylian Mbappé', '32109876543','k.mbappe','1998-12-20'),
-#('Kevin De Bruyne', '56789012345','debruyne','1991-06-28'),
-#('Sergio Ramos', '89012345678','sr4','1986-03-30'),
-#('Robert Lewandowski', '23456789012','rl9','1988-08-21'),
-#('Mohamed Salah', '67890123456','mosalah','1992-06-15'),
-#('Gareth Bale', '90123456789','garethb11','1989-07-16'),
-#('Eden Hazard', '34567890123','hazard10','1991-01-07');
+CREATE TABLE IF NOT EXISTS Campeonato (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL
+);
 
-SELECT nome, sobrenome, apelido, YEAR(NOW()) - YEAR(dt_nascimento) AS Idade FROM Jogador;
+CREATE TABLE IF NOT EXISTS Edicao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ano_edicao VARCHAR(45) NOT NULL,
+    dt_inicio DATE NOT NULL,
+    dt_Fim DATE NOT NULL,
+    id_campeonato INT NOT NULL,
+    FOREIGN KEY (id_campeonato) REFERENCES Campeonato(id)
+);
+
+CREATE TABLE IF NOT EXISTS Jogo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_edicao INT NOT NULL,
+    id_time_visitante INT NOT NULL,
+    id_time_casa INT NOT NULL,
+    dt_jogo DATE NOT NULL,
+    FOREIGN KEY (id_edicao) REFERENCES Edicao(id),
+    FOREIGN KEY (id_time_visitante) REFERENCES Time(id),
+    FOREIGN KEY (id_time_casa) REFERENCES Time(id)
+);
+
+CREATE TABLE IF NOT EXISTS Resultado (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gols_time_casa INT NOT NULL,
+    gols_time_visitante INT NOT NULL,
+    id_jogo INT NOT NULL,
+    FOREIGN KEY (id_jogo) REFERENCES Jogo(id)
+);

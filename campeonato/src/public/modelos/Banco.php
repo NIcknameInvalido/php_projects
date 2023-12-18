@@ -7,7 +7,6 @@
             if($sql_conn->connect_error){
                 die("Erro: " . $sql_conn->connect_error);
             }
-            
             return $sql_conn;
         }
 
