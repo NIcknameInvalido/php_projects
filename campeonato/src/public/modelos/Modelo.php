@@ -28,10 +28,16 @@
         public function getColunas(){
             return static::$colunas;
         }
+        public static function limparFiltros($filtros){
+            $colunasDiferentes = array_diff(array_keys($filtros), static::$colunas);
+            foreach($colunasDiferentes as $col){
+                unset($filtros[$col]);
+            }
+            return $filtros;
+        }
         
-        public static function obterTodosRegistros($colunas = "*"){
+        public static function obterTodosRegistros($colunas = "*", $filtros = []){
             $obejtos = [];
-            $filtros = [];
             $resultado = static::obterDeUmSelect($filtros, $colunas);
 
             if($resultado){
@@ -43,7 +49,7 @@
             return $obejtos;
         }
         public static function obterRegistroUnico($filtros, $colunas = "*"){
-            $resultado = static::obterDeUmSelect($filtros, $colunas);
+            $resultado = static::obterDeUmSelect(static::limparFiltros($filtros), $colunas);
             if($resultado->num_rows == 1){
                 $class = get_called_class();
                 $objeto = new $class($resultado->fetch_assoc());

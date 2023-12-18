@@ -5,10 +5,7 @@ FROM php:8.3.0-fpm
 RUN apt-get update && apt-get install -y git curl zip vim unzip libpq-dev
 
 # Instale as extensões PHP necessárias
-RUN docker-php-ext-install pdo pdo_pgsql mysqli
-
-# Habilite as extensões PHP
-RUN docker-php-ext-enable mysqli
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 # Defina o diretório de trabalho para o Nginx
 WORKDIR /var/www
