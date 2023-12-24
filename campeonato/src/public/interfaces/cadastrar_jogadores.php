@@ -1,9 +1,8 @@
 <?php require('componentes/cabecalho.php') ?>
-<form class="col-12 d-flex align-items-center px-5" action="../controles/cadastrar_jogadores.php" method="post">
+<form class="shadow-lg col-xl-6 d-flex align-items-center px-5" action="../controles/cadastrar_jogadores.php" method="post">
     <div class="container mt-4">
         <h1 class="">Cadastro de jogadores</h1>
         <div class="col">
-            <form action="../controles/jogadores.php" method="post">
                 <div class="row">
                     <div class="col-12 col-md-6 col-xl-3">
                         <label for="nome">Nome</label>
@@ -37,8 +36,7 @@
                         <input type="date" class="form-control" id="dt_inicio" name="dt_inicio" placeholder="DD/MM/AAAA" value="<?= isset($_POST['dt_inicio']) ? $_POST['dt_inicio'] : "" ?>">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
-            </form>
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Cadastrar</button>
         </div>
     </div>
 </form>

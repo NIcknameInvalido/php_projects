@@ -5,15 +5,19 @@
         protected  $valores = [];
 
         function __construct($arr = []){
-            $this->loadFromArray($arr);
+            $this->obterValoresDeArray($arr);
         }
 
-        public function loadFromArray($arr){
+        public function obterValoresDeArray($arr){
             if($arr){
                 foreach ($arr as $chave => $valores) {
                     $this->$chave = $valores;
                 }
                 
+            }else{
+                foreach (static::$colunas as $chave) {
+                    $this->chave = "";
+                }
             }
         }
 
@@ -21,7 +25,7 @@
         public function __get($chave){
             return $this->valores[$chave];
         }
-        
+
         public function __set($chave, $valor){
             $this->valores[$chave] = $valor;
         }
@@ -36,9 +40,9 @@
             return $filtros;
         }
         
-        public static function obterTodosRegistros($colunas = "*", $filtros = []){
+        public static function selectAll($colunas = "*", $filtros = []){
             $obejtos = [];
-            $resultado = static::obterDeUmSelect($filtros, $colunas);
+            $resultado = static::select($filtros, $colunas);
 
             if($resultado){
                 $class = get_called_class();
@@ -48,8 +52,8 @@
             }
             return $obejtos;
         }
-        public static function obterRegistroUnico($filtros, $colunas = "*"){
-            $resultado = static::obterDeUmSelect(static::limparFiltros($filtros), $colunas);
+        public static function selectOne($filtros, $colunas = "*"){
+            $resultado = static::select(static::limparFiltros($filtros), $colunas);
             if($resultado->num_rows == 1){
                 $class = get_called_class();
                 $objeto = new $class($resultado->fetch_assoc());
@@ -58,7 +62,7 @@
         }
 
         //função para construir um select simples
-        public static function obterDeUmSelect($filtros = [], $colunas = "*"){
+        public static function select($filtros = [], $colunas = "*"){
             $sql = "SELECT ";
             if($colunas === "*"){
                 $sql .= $colunas;
@@ -80,7 +84,7 @@
            // 
         }
 
-        public function insertInto(){
+        public function save(){
             $insert = "INSERT INTO ".static::$nome_tabela .
             " (" . implode(",", static::$colunas).")" . " VALUES ( ";
             

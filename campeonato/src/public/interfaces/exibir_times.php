@@ -1,4 +1,5 @@
 <?php require('componentes/cabecalho.php') ?>
+<div class="row col-12 table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -9,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($times as $arr => $time): ?>
+            <?php foreach ($times as $arr => $time) : ?>
                 <tr>
                     <th scope="row"><?= $time->id ?></th>
                     <td><?= $time->nome ?></td>
@@ -19,4 +20,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <div class="col-12 mt-4">
+            <button type="button" class="btn btn-dark"><a style="text-decoration: none;" class="text-light" href="../controles/cadastrar_times.php" target="_blank">Cadastrar Times</a></button>
+    </div>
+</div>
 <?php require('componentes/rodape.php') ?>

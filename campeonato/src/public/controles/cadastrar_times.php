@@ -3,9 +3,9 @@
     $dados = [];
     if($_POST){
         $time = new Time($_POST);
-        $timeId = $time->insertInto();
+        $timeId = $time->save();
         if($timeId){
-            $timeTeste = Time::obterRegistroUnico(['id'=>$timeId]);
+            $timeTeste = Time::selectAll(['id'=>$timeId]);
             $dados = ['id' => $timeId];
             header("Location: exibir_times.php");
         }

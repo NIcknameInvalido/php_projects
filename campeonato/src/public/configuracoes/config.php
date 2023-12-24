@@ -13,6 +13,10 @@
     include(MODELO."/Jogador.php");
     include(MODELO."/Time.php");
     include(MODELO."/Contrato.php");
+    include(MODELO."/Campeonato.php");
+    include(MODELO."/Edicao.php");
+    include(MODELO."/Jogo.php");
+    include(MODELO."/Resultado.php");
 
    function carregarInterface($interface, $dados = []){
         $caminhoArquivo = INTERFACES . "/" . $interface. ".php";

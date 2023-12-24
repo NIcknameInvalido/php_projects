@@ -90,14 +90,15 @@ FROM
 
 
 SELECT j.nome, t.nome, c.dt_inicio FROM Contrato as c INNER JOIN Jogador AS j ON c.id_jogador = j.id INNER JOIN Time AS t ON c.id_time = t.id;
-
+SELECT * FROM Edicao;
+SELECT * FROM Campeonato
 
 /* SELECT SIMPLES PARA AS TABELAS
 SELECT * FROM Jogador;
 SELECT * FROM Time;
 SELECT * FROM Contrato;
 SELECT * FROM Campeonato;
-SELECT * FROM Edicao;
+
 SELECT * FROM Jogo;
 SELECT c.nome, e.dt_inicio, e.dt_fim FROM Campeonato as c INNER JOIN Edicao as e ON c.id = e.id_campeonato;
 SELECT j.nome, t.nome, c.dt_inicio FROM Contrato as c INNER JOIN Jogador AS j ON c.id_jogador = j.id INNER JOIN Time AS t ON c.id_time = t.id; */

@@ -2,11 +2,11 @@
     include('../configuracoes/config.php');
    
     $jogadores_contrato = [];
-    $contratos = Contrato::obterTodosRegistros();
+    $contratos = Contrato::selectAll();
 
     foreach ($contratos as $indice => $contrato){
-        $jogador = Jogador::obterRegistroUnico(['id'=>$contrato->id_jogador]);
-        $time = Time::obterRegistroUnico(['id'=>$contrato->id_time]);
+        $jogador = Jogador::selectOne(['id'=>$contrato->id_jogador]);
+        $time = Time::selectOne(['id'=>$contrato->id_time]);
 
         array_push($jogadores_contrato, ['id' => $jogador->id, 'id_contrato' => $contrato->id, 
             'nome' => $jogador->nome ." ".$jogador->sobrenome,

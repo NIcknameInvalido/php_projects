@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 function retornaUmJogador($params)
 {
-    $jogador = Jogador::obterRegistroUnico($params);
+    $jogador = Jogador::selectOne($params);
     $resposta = [];
     if (isset($jogador)) {
         $resposta = [
@@ -25,7 +25,7 @@ function retornaUmJogador($params)
 
 function retornaTodosJogadores($params=[])
 {
-    $jogadores = Jogador::obterTodosRegistros();
+    $jogadores = Jogador::selectAll();
     $resposta = [];
     
     foreach($jogadores as $ch => $jogador){
@@ -59,7 +59,7 @@ switch ($method) {
         break;
     case 'POST':
         $jogador = new Jogador($_POST);
-        $id = $jogador->insertInto();
+        $id = $jogador->save();
         echo $id;
         break;
     case 'PUT':
