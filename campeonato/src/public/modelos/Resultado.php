@@ -7,6 +7,6 @@
             'id_jogo',
         ];
 
-        protected static $nome_tabela = 'Edicao';
+        protected static $nome_tabela = 'Resultado';
     }
 ?>

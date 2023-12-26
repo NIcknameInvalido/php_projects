@@ -1,5 +1,5 @@
 <?php 
-    Class Jogo {
+    Class Jogo extends Modelo {
         protected static $colunas = [
             'id',
             'id_edicao',

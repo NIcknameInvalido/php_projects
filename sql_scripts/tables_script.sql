@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS Edicao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ano_edicao VARCHAR(45) NOT NULL,
     dt_inicio DATE NOT NULL,
-    dt_Fim DATE NOT NULL,
+    dt_fim DATE NOT NULL,
     id_campeonato INT NOT NULL,
     FOREIGN KEY (id_campeonato) REFERENCES Campeonato(id)
 );

@@ -3,8 +3,6 @@ header('Content-Type: application/json');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-
 function retornaUmJogador($params)
 {
     $jogador = Jogador::selectOne($params);
@@ -39,12 +37,8 @@ function retornaTodosJogadores($params=[])
     }
     return json_encode($resposta);
 }
-
-// require_once(dirname(realpath('../configuracoes')."\configuracoes")."\config.php");
 require_once('../configuracoes/config.php');
 $method = $_SERVER['REQUEST_METHOD'];
-
-// Lógica para manipular diferentes métodos HTTP (GET, POST, PUT, DELETE, etc.)
 switch ($method) {
     case 'GET':
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
