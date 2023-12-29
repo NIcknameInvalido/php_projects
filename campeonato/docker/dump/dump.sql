@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS  Contrato (
 );
 
 CREATE TABLE IF NOT EXISTS Campeonato (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
     nome VARCHAR(45) NOT NULL
 );
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS Edicao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ano_edicao VARCHAR(45) NOT NULL,
     dt_inicio DATE NOT NULL,
-    dt_Fim DATE NOT NULL,
+    dt_fim DATE NOT NULL,
     id_campeonato INT NOT NULL,
     FOREIGN KEY (id_campeonato) REFERENCES Campeonato(id)
 );
@@ -70,10 +70,12 @@ CREATE TABLE IF NOT EXISTS Jogo (
 
 CREATE TABLE IF NOT EXISTS Resultado (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    gols_time_casa INT NOT NULL,
-    gols_time_visitante INT NOT NULL,
+    gols_pro INT NOT NULL,
+    gols_contra INT NOT NULL,
     id_jogo INT NOT NULL,
-    FOREIGN KEY (id_jogo) REFERENCES Jogo(id)
+    id_time, INT NOT NULL,
+    FOREIGN KEY (id_jogo) REFERENCES Jogo(id),
+    FOREIGN KEY (id_time) REFERENCES Time(id)
 );
 
 USE campeonato;
@@ -131,52 +133,3 @@ INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '
 
 INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
 VALUES (1,1,2,'2021-01-20');
-
-
-/*SELECT tj1.sobrenome, t1.nome, c.nome, j.dt_jogo, CASE WHEN j.id_time_casa IS NOT NULL THEN 'Casa' ELSE 'Visitante' END AS Tipo
-FROM Edicao as e INNER JOIN Campeonato AS c ON c.id = e.id_campeonato
-INNER JOIN Jogo as j ON e.id = j.id_edicao
-INNER JOIN Time as t1 ON t1.id = j.id_time_casa
-INNER JOIN Contrato as c1 ON t1.id = c1.id_time
-INNER JOIN Jogador as tj1 ON tj1.id = c1.id_jogador
-UNION
-SELECT tj2.sobrenome, t2.nome, c.nome, j.dt_jogo, CASE WHEN j.id_time_visitante IS NOT NULL THEN 'Visitante' ELSE 'Casa' END AS Tipo
-FROM Edicao as e INNER JOIN Campeonato AS c ON c.id = e.id_campeonato
-INNER JOIN Jogo as j ON e.id = j.id_edicao
-INNER JOIN Time as t2 ON t2.id = j.id_time_visitante
-INNER JOIN Contrato as c2 ON t2.id = c2.id_time
-INNER JOIN Jogador as tj2 ON tj2.id = c2.id_jogador;
-
-
-SELECT 
-    CASE WHEN j.id_time_casa IS NOT NULL THEN tj_casa.sobrenome ELSE tj_visitante.sobrenome END AS sobrenome_jogador,
-    CASE WHEN j.id_time_casa IS NOT NULL THEN t1.nome ELSE t2.nome END AS nome_time,
-    c.nome AS nome_campeonato,
-    j.dt_jogo,
-    CASE WHEN j.id_time_casa IS NOT NULL THEN 'Casa' ELSE 'Visitante' END AS tipo_time
-FROM
-    Edicao AS e
-    INNER JOIN Campeonato AS c ON c.id = e.id_campeonato
-    INNER JOIN Jogo AS j ON e.id = j.id_edicao
-    LEFT JOIN Contrato AS c1 ON j.id_time_casa = c1.id_time
-    LEFT JOIN Time AS t1 ON t1.id = c1.id_time
-    LEFT JOIN Jogador AS tj_casa ON tj_casa.id = c1.id_jogador
-    LEFT JOIN Contrato AS c2 ON j.id_time_visitante = c2.id_time
-    LEFT JOIN Time AS t2 ON t2.id = c2.id_time
-    LEFT JOIN Jogador AS tj_visitante ON tj_visitante.id = c2.id_jogador;
-
-
-
-SELECT j.nome, t.nome, c.dt_inicio FROM Contrato as c INNER JOIN Jogador AS j ON c.id_jogador = j.id INNER JOIN Time AS t ON c.id_time = t.id;
-
-
-/* SELECT SIMPLES PARA AS TABELAS
-SELECT * FROM Jogador;
-SELECT * FROM Time;
-SELECT * FROM Contrato;
-SELECT * FROM Campeonato;
-SELECT * FROM Edicao;
-SELECT * FROM Jogo;
-SELECT c.nome, e.dt_inicio, e.dt_fim FROM Campeonato as c INNER JOIN Edicao as e ON c.id = e.id_campeonato;
-SELECT j.nome, t.nome, c.dt_inicio FROM Contrato as c INNER JOIN Jogador AS j ON c.id_jogador = j.id INNER JOIN Time AS t ON c.id_time = t.id; */*/
-

@@ -22,19 +22,39 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../controles/cadastrar_times.php">Cadastrar Times</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../controles/cadastrar_jogadores.php">Cadastrar Jogadores</a>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark btt-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Times
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="../controles/cadastrar_times.php">Cadastrar times</a></li>
+                            <li><a class="dropdown-item" href="../controles/exibir_times.php">Exibir times</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <button class="btn btn-dark btt-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Menus
+                            Jogadores
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../controles/exibir_times.php">Gerenciar Times</a></li>
-                            <li><a class="dropdown-item" href="../controles/exibir_jogadores.php">Gerenciar Jogadores</a></li>
+                            <li><a class="dropdown-item" href="../controles/cadastrar_jogadores.php">Cadastrar jogadores</a></li>
+                            <li><a class="dropdown-item" href="../controles/exibir_jogadores.php">Gerenciar jogadores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark btt-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Campeonatos
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="../controles/cadastrar_campeonato.php">Cadastrar campeonato</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark btt-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Jogos e resultados
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="../controles/cadastrar_jogos.php">Cadastrar jogos</a></li>
+                            <li><a class="dropdown-item" href="../controles/exibir_jogos.php">Registrar resultados</a></li>
                         </ul>
                     </li>
                 </ul>

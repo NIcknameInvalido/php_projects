@@ -91,7 +91,7 @@ class Modelo
     //função para construir um select avançado e obter resultados
     public static function selectOneFromJoin($nome_tabela_principal, $tabelas_colunas, $joins, $filtros = [])
     {
-        $resultado = static::selectOneFromJoin($nome_tabela_principal, $tabelas_colunas, $joins, static::limparFiltros($filtros));
+        $resultado = static::selectFromJoin($nome_tabela_principal, $tabelas_colunas, $joins, $filtros);
         if ($resultado->num_rows == 1) {
             $class = get_called_class();
             $objeto = new $class($resultado->fetch_assoc());
@@ -129,7 +129,7 @@ class Modelo
             return "Colunas insuficientes para realizar consultas";
         }
         if ($filtros) {
-            $sql .= ' WHERE ' . static::formatarFiltros($filtros);
+            $sql .= static::formatarFiltros($filtros);
         }
         $resultados = Banco::obterResultadoDoSql($sql);
         return $resultados;

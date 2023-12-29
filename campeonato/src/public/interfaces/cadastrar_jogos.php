@@ -1,6 +1,11 @@
 <?php require('componentes/cabecalho.php') ?>
 <div class="container-fluid">
     <form class="shadow-lg col-12 col-md-6 mx-auto my-5 p-5" action="../controles/cadastrar_jogos.php" method="post">
+        <?php if (isset($jogo_id) && $jogo_id > 0) : ?>
+            <div class="alert alert-success" role="alert">
+                Jogo n# <?=$jogo_id?> cadastrado com sucesso
+            </div>
+        <?php endif ?>
         <div class="row mb-3">
             <div class="form-group col-12">
                 <label for="select1" class="form-label fs-5 text-dark">Campeonato</label>
@@ -45,10 +50,4 @@
         </div>
     </form>
 </div>
-<script>
-    var jogoId = <?php echo isset($jogo_id) && $jogo_id > 0 ? $jogo_id : 0; ?>;
-    if (jogoId > 0) {
-        window.alert(`Jogo número ${jogoId} cadastrado com sucesso`);
-    }
-</script>
 <?php require('componentes/rodape.php') ?>

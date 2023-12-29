@@ -23,7 +23,5 @@
         $jogo->save();
         return $jogo->id;
     }
-
-
     carregarTimesCampeonato();
 ?>

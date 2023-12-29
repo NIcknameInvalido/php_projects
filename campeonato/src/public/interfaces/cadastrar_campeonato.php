@@ -36,7 +36,7 @@
         <table class="table text-center">
             <thead>
                 <tr>
-                    <th class="col-3" scope="col">Cameponato</th>
+                    <th class="col-3" scope="col">Campeonato</th>
                     <th class="col" scope="col">Ano da Edição</th>
                     <th class="col" scope="col">Data de Início</th>
                     <th class="col" scope="col">Data de Fim</th>
