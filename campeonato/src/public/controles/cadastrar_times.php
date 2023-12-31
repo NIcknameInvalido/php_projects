@@ -1,15 +1,17 @@
 <?php
     include('../configuracoes/config.php');
-    $dados = [];
+    $exception = NULL;
+    
     if($_POST){
-        $time = new Time($_POST);
-        $timeId = $time->save();
-        if($timeId){
-            $timeTeste = Time::selectAll(['id'=>$timeId]);
-            $dados = ['id' => $timeId];
-            header("Location: exibir_times.php");
-        }
+        try {
+            $time = new Time($_POST);
+            $time->save();     
+        } catch (ValidationException $e) {
+            $exception = $e->getErrors();
+        }   
     }
-    carregarInterface('cadastrar_times', $dados);
+    
+    
+    carregarInterface('cadastrar_times', ['errors'=> $exception]);
     exit();
 ?>

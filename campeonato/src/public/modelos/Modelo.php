@@ -122,16 +122,17 @@ class Modelo
             }
             $sql[strlen($sql) - 1] = " ";
             $sql .= "FROM " . $nome_tabela_principal;
-            foreach ($joins as $tabela => $join) {
-                $sql .= " INNER JOIN " . $tabela . static::join($join);
+            foreach ($joins as $tab => $join) {
+                $sql .= " INNER JOIN " . $tab . static::join($join);
             }
         } else {
             return "Colunas insuficientes para realizar consultas";
         }
-        if ($filtros) {
+        if (count($filtros) > 0) {
             $sql .= static::formatarFiltros($filtros);
         }
         $resultados = Banco::obterResultadoDoSql($sql);
+    
         return $resultados;
     }
     public static function join($joins)
@@ -146,20 +147,19 @@ class Modelo
     #Funções de DML
     public function save()
     {
-        $insert = "INSERT INTO " . static::$nome_tabela .
-            " (" . implode(",", static::$colunas) . ")" . " VALUES ( ";
-
-        $this->id = 0;
-        foreach (static::$colunas as $col) {
-            $insert .= static::formatarValor($this->$col) . ",";
+        $sql = "INSERT INTO " . static::$nome_tabela .
+            " (" . implode(",", array_slice(static::$colunas,1)) . ")" . " VALUES ( ";
+        foreach (array_slice(static::$colunas,1) as $col) {
+            $sql .= '?' . ",";
         }
-        $insert[strlen($insert) - 1] = ")";
-
+        $sql[strlen($sql) - 1] = ")";
         try {
-            $this->id = Banco::executarSql($insert);
+            $this->id = Banco::insert($sql, $this->valores);
             return $this->id;
         } catch (Exception $excp) {
-            echo $excp->getMessage();
+
+            
+            return $excp->getMessage();
         }
     }
     //funcação para formatar os filtros
@@ -168,10 +168,10 @@ class Modelo
         $filtro_formatado = " WHERE ";
         $contador = 0;
         foreach ($filtros as $chave => $valor) {
-            if ($contador == 0) {
-                $filtro_formatado .= $chave . "=" . static::formatarValor($valor);
-            } else {
+            if ($contador > 0) {
                 $filtro_formatado .= " AND " . $chave . "=" . static::formatarValor($valor);
+            } else {
+                $filtro_formatado .= $chave . "=" . static::formatarValor($valor);
             }
             $contador++;
         }

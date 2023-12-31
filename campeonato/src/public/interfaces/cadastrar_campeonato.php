@@ -1,4 +1,4 @@
-<?php require('componentes/cabecalho.php') ?>
+<?php require('componentes/cabecalho.php'); ?>
 <div class="row d-flex justify-content-center">
     <div class="col-4">
         <form class="shadow-lg col-12 d-flex align-items-center p-5" action="../controles/cadastrar_campeonato.php" method="post">

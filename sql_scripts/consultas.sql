@@ -23,7 +23,8 @@ WHERE id_jogo IN (SELECT id FROM Jogo WHERE Jogo.id_time_casa = 1 or Jogo.id_tim
 
 
 SELECT t.id,t.nome,
-	((SELECT COUNT(*) FROM Resultado as re WHERE re.id_time = t.id AND gols_pro > gols_contra) * 3) + (SELECT COUNT(*) FROM Resultado as re WHERE re.id_time  = t.id AND gols_pro = gols_contra) AS 'Pontos',
+	((SELECT COUNT(*) FROM Resultado as re WHERE re.id_time = t.id AND gols_pro > gols_contra) * 3) + 
+    (SELECT COUNT(*) FROM Resultado as re WHERE re.id_time  = t.id AND gols_pro = gols_contra) AS 'Pontos',
 	(SELECT COUNT(*) FROM Resultado as re WHERE re.id_time = t.id AND gols_pro > gols_contra) AS 'Vitórias', 
 	(SELECT COUNT(*) FROM Resultado as re WHERE re.id_time  = t.id AND gols_pro = gols_contra) AS 'Empates',
     (SELECT COUNT(*) FROM Resultado as re WHERE re.id_time  = t.id AND gols_pro < gols_contra) AS 'Derrotas'

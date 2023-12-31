@@ -1,26 +1,29 @@
 <?php
     include('../configuracoes/config.php');
-    
+    $exception = NULL;
     $times = Time::selectAll();
 
     if(isset($_POST)){
-        $jogadorId = 0;
         if(isset($_POST['timeId']) > 0 && isset($_POST['dt_inicio'])){
-            $contrato = "";
-            $jogador = new Jogador([
-               'nome' => $_POST['nome'], 'sobrenome' => $_POST['sobrenome'], 'cpf' => $_POST['cpf'], 
-                 'dt_nascimento' => $_POST['dt_nascimento']
-            ]);
-            if(isset($jogador)){
-                $jogadorId = $jogador->save();
+            try {
+                $jogador = new Jogador([
+                    'nome' => $_POST['nome'], 'sobrenome' => $_POST['sobrenome'], 'cpf' => $_POST['cpf'], 
+                      'dt_nascimento' => $_POST['dt_nascimento']
+                 ]);
+
+                 $jogador->save();
+            } catch (ValidationException $e) {
+                $exception = $e->getErrors();
+            }
+            if(isset($jogador->id)){
                 $arrTemp = ['id' => "NULL", 'dt_inicio' => $_POST['dt_inicio'],'dt_fim' => "NULL",
                 'id_jogador' => $jogadorId, 'id_time' => $_POST['timeId']];
-                $contrato = new Contrato($arrTemp);
+                $cofntrato = new Contrato($arrTemp);
                 $contrato->save();
             }else{
-                 echo "Error";
+                 var_dump($exception);
             }
         }
     }
-    carregarInterface('cadastrar_jogadores', ['times'=> $times]);
+    carregarInterface('cadastrar_jogadores', ['times'=> $times, 'errors' => $exception]);
 ?>

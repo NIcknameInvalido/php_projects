@@ -15,9 +15,6 @@ WHERE
 
 /*CONSULTAS */
 SELECT * FROM Jogo WHERE id_time_casa = 1 OR id_time_visitante = 1 ORDER BY id_time_casa, id_time_visitante ASC;
-
-
-
 /*GERANDO RESULTADOS ALEATÓRIOS PARA OS JOGOS*/
 INSERT INTO Resultado(gols_pro, gols_contra, id_jogo,id_time)
 SELECT
