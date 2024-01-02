@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require_once('../configuracoes/config.php');
 function retornaUmJogador($params)
 {
     $jogador = Jogador::selectOne($params);
@@ -37,7 +38,7 @@ function retornaTodosJogadores($params = [])
     }
     return json_encode($resposta);
 }
-require_once('../configuracoes/config.php');
+
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':

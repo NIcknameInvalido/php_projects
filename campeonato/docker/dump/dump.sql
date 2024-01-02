@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS Edicao (
 CREATE TABLE IF NOT EXISTS Jogo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_edicao INT NOT NULL,
-    id_time_visitante INT NOT NULL,
     id_time_casa INT NOT NULL,
+    id_time_visitante INT NOT NULL,
     dt_jogo DATE NOT NULL,
     FOREIGN KEY (id_edicao) REFERENCES Edicao(id),
     FOREIGN KEY (id_time_visitante) REFERENCES Time(id),
@@ -69,11 +69,11 @@ CREATE TABLE IF NOT EXISTS Jogo (
 );
 
 CREATE TABLE IF NOT EXISTS Resultado (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     gols_pro INT NOT NULL,
     gols_contra INT NOT NULL,
     id_jogo INT NOT NULL,
-    id_time, INT NOT NULL,
+    id_time INT NOT NULL,
     FOREIGN KEY (id_jogo) REFERENCES Jogo(id),
     FOREIGN KEY (id_time) REFERENCES Time(id)
 );
@@ -125,11 +125,10 @@ INSERT INTO Contrato (dt_inicio, dt_fim, id_jogador, id_time) VALUES
 ('2023-12-02', NULL, 12, 2);
 
 
-INSERT INTO Campeonato (nome) VALUES ('planaltina_cup');
+INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '2021-01-20', '2021-02-21', 1);
+INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '2022-01-20', '2022-02-21', 1);
 
 
-
-
-INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
-VALUES (1,1,2,'2021-01-20');
+/*INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
+VALUES (1,1,2,'2021-01-20');*/

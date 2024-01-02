@@ -7,7 +7,7 @@
             'id_time_casa',
             'dt_jogo'
         ];
-
+        
         protected static $nome_tabela = 'Jogo';
     }
 ?>

@@ -131,4 +131,4 @@ INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '
 
 
 /*INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
-VALUES (1,1,2,'2021-01-20');
+VALUES (1,1,2,'2021-01-20');*/
