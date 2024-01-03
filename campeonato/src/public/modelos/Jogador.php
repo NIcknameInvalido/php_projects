@@ -30,7 +30,7 @@
             }
             if($this->dt_nascimento == "" || ($ano < 10 || $ano > 50)){
                 $errors['dt_nascimento'] = 'Valor fornecido para data de nascimento está incorreto';
-                echo($ano);
+                
             }
             if(count($errors) > 0){
                 throw new ValidationException($errors);

@@ -37,7 +37,7 @@
             <thead>
                 <tr>
                     <th class="col-3" scope="col">Campeonato</th>
-                    <th class="col" scope="col">Ano da Edição</th>
+                    <th class="col" scope="col">Edição</th>
                     <th class="col" scope="col">Data de Início</th>
                     <th class="col" scope="col">Data de Fim</th>
                     <th class="col" scope="col">Ações</th>
