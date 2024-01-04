@@ -1,7 +1,7 @@
 <?php
 include('../configuracoes/config.php');
 
-
+$messageDelete = NULL;
 $exception = NULL;
 $edicoes_campeonato = [];
 $edicoes = Edicao::selectAll();
@@ -33,6 +33,7 @@ if ($_POST) {
             $edicao->save();
         } catch (ValidationException $e) {
             is_null($exception) ? $exception = $e->getErrors() : array_merge($exception, $e->getErrors());
+            $messageDelete = $camp->delete(['id'=> $camp->id]);
         }
     }
 
@@ -50,4 +51,4 @@ if ($_POST) {
     }
 }
 
-return carregarInterface('cadastrar_campeonato', ['edicoes_campeonato' => $edicoes_campeonato, 'errors' => $exception]);
+return carregarInterface('cadastrar_campeonato', ['edicoes_campeonato' => $edicoes_campeonato, 'errors' => $exception, 'messageDelete' => $messageDelete]);

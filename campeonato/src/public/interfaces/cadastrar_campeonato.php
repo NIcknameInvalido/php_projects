@@ -48,6 +48,8 @@
                         <?php endif ?>
                     </div>
                 </div>
+                <?php include('componentes/messages.php');?>
+                <?php exibirMensagem($messageDelete); ?>
                 <button type="submit" class="btn btn-primary mt-3 mb-5">Cadastrar</button>
             </div>
         </form>

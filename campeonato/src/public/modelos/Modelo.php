@@ -85,7 +85,7 @@ class Modelo
         if ($filtros) {
             $sql .= static::formatarFiltros($filtros);
         }
-        $resultados = Banco::obterResultadoDoSql($sql);
+        $resultados = Banco::find($sql);
         return $resultados;
     }
     //função para construir um select avançado e obter resultados
@@ -111,6 +111,8 @@ class Modelo
         }
         return $obejtos;
     }
+
+    /*contrução da query para fazer select com innerJoin()*/
     public static function selectFromJoin($nome_tabela_principal, $tabelas_colunas, $joins, $filtros = [])
     {
         $sql = "SELECT ";
@@ -131,7 +133,7 @@ class Modelo
         if (count($filtros) > 0) {
             $sql .= static::formatarFiltros($filtros);
         }
-        $resultados = Banco::obterResultadoDoSql($sql);
+        $resultados = Banco::find($sql);
     
         return $resultados;
     }
@@ -157,8 +159,6 @@ class Modelo
             $this->id = Banco::insert($sql, $this->valores);
             return $this->id;
         } catch (Exception $excp) {
-
-            
             return $excp->getMessage();
         }
     }
@@ -177,12 +177,21 @@ class Modelo
         }
         return $filtro_formatado;
     }
-
+    /*formatação de valores para query do SQL*/
     public static function formatarValor($valor)
     {
-        if (!is_numeric($valor) and $valor != "NULL") {
+        if (!is_numeric($valor) && $valor != "NULL") {
             return "'" . $valor . "'";
         }
         return $valor;
+    }
+
+    public function delete($filtros){
+        if(count($filtros) < 1){
+            throw new Exception("para fazer deleções é necessário filtros");
+        }else{
+            $sql = 'DELETE FROM '. static::$nome_tabela.static::formatarFiltros($filtros);
+            return Banco::delete($sql);
+        }
     }
 }

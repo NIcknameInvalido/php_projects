@@ -12,7 +12,7 @@ class Banco
         return $sql_conn;
     }
 
-    public static function obterResultadoDoSql($sql)
+    public static function find($sql)
     {
         try {
             $sql_conn = static::conectarAoBanco();
@@ -51,6 +51,18 @@ class Banco
             $sql_conn->close();
             return $id;
         } catch (ValidationException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static function delete($sql){
+        try{
+            $sql_conn = static::conectarAoBanco();
+            $resultado = $sql_conn->query($sql);
+            if($resultado){
+                return "Campeonato deletado";
+            }
+        }catch(Exception $e){
             return $e->getMessage();
         }
     }
