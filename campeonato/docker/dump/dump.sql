@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Campeonato (
 
 CREATE TABLE IF NOT EXISTS Edicao (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    ano_edicao VARCHAR(45) NOT NULL,
+    ano_edicao INT NOT NULL,
     dt_inicio DATE NOT NULL,
     dt_fim DATE NOT NULL,
     id_campeonato INT NOT NULL,
@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS Edicao (
 CREATE TABLE IF NOT EXISTS Jogo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_edicao INT NOT NULL,
-    id_time_visitante INT NOT NULL,
     id_time_casa INT NOT NULL,
+    id_time_visitante INT NOT NULL,
     dt_jogo DATE NOT NULL,
     FOREIGN KEY (id_edicao) REFERENCES Edicao(id),
     FOREIGN KEY (id_time_visitante) REFERENCES Time(id),
@@ -69,11 +69,11 @@ CREATE TABLE IF NOT EXISTS Jogo (
 );
 
 CREATE TABLE IF NOT EXISTS Resultado (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     gols_pro INT NOT NULL,
     gols_contra INT NOT NULL,
     id_jogo INT NOT NULL,
-    id_time, INT NOT NULL,
+    id_time INT NOT NULL,
     FOREIGN KEY (id_jogo) REFERENCES Jogo(id),
     FOREIGN KEY (id_time) REFERENCES Time(id)
 );
@@ -125,11 +125,60 @@ INSERT INTO Contrato (dt_inicio, dt_fim, id_jogador, id_time) VALUES
 ('2023-12-02', NULL, 12, 2);
 
 
-INSERT INTO Campeonato (nome) VALUES ('planaltina_cup');
+INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '2021-01-20', '2021-02-21', 1);
+INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '2022-01-20', '2022-02-21', 1);
+
+DELIMITER $$
+CREATE PROCEDURE gerar_jogos_campeonato ()
+BEGIN
+	/*INSERINDO OS JOGOS*/
+	INSERT INTO Jogo (id_edicao, id_time_casa, id_time_visitante, dt_jogo)
+	SELECT
+		1 AS id_edicao,
+		casa.id AS id_time_casa,
+		visitante.id AS id_time_visitante,
+		DATE_ADD('2021-01-20', INTERVAL FLOOR(RAND() * DATEDIFF('2021-02-21', '2021-01-20')) DAY) AS dt_jogo
+	FROM
+		(SELECT id FROM Time) casa,
+		(SELECT id FROM Time) visitante
+	WHERE
+		casa.id != visitante.id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE gerar_resultados_aleatórios ()
+BEGIN
+	/*INSERINDO OS JOGOS*/
+	INSERT INTO Resultado(gols_pro, gols_contra, id_jogo,id_time)
+		SELECT
+			FLOOR(RAND() * 5) AS gols_pro,
+			FLOOR(RAND() * 5) AS gols_contra,
+			jogo.id AS id_jogo,
+			time.id AS id_time
+		FROM
+			Jogo jogo
+		INNER JOIN
+			Time time ON time.id = jogo.id_time_casa;
+	INSERT INTO Resultado(gols_pro, gols_contra, id_jogo,id_time)
+		SELECT
+			FLOOR(RAND() * 5) AS gols_pro,
+			FLOOR(RAND() * 5) AS gols_contra,
+			jogo.id AS id_jogo,
+			time.id AS id_time
+		FROM
+			Jogo jogo
+		INNER JOIN
+			Time time ON time.id = jogo.id_time_visitante;
+END $$
+DELIMITER ;
+
+CALL gerar_jogos_campeonato;
+CALL gerar_resultados_aleatórios;
 
 
 
 
-INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
-VALUES (1,1,2,'2021-01-20');
+/*INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
+VALUES (1,1,2,'2021-01-20');*/

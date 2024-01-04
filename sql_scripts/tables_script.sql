@@ -129,6 +129,52 @@ INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '2021-01-20', '2021-02-21', 1);
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '2022-01-20', '2022-02-21', 1);
 
+DELIMITER $$
+CREATE PROCEDURE gerar_jogos_campeonato ()
+BEGIN
+	/*INSERINDO OS JOGOS*/
+	INSERT INTO Jogo (id_edicao, id_time_casa, id_time_visitante, dt_jogo)
+	SELECT
+		1 AS id_edicao,
+		casa.id AS id_time_casa,
+		visitante.id AS id_time_visitante,
+		DATE_ADD('2021-01-20', INTERVAL FLOOR(RAND() * DATEDIFF('2021-02-21', '2021-01-20')) DAY) AS dt_jogo
+	FROM
+		(SELECT id FROM Time) casa,
+		(SELECT id FROM Time) visitante
+	WHERE
+		casa.id != visitante.id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE gerar_resultados_aleatórios ()
+BEGIN
+	/*INSERINDO OS JOGOS*/
+	INSERT INTO Resultado(gols_pro, gols_contra, id_jogo,id_time)
+		SELECT
+			FLOOR(RAND() * 5) AS gols_pro,
+			FLOOR(RAND() * 5) AS gols_contra,
+			jogo.id AS id_jogo,
+			time.id AS id_time
+		FROM
+			Jogo jogo
+		INNER JOIN
+			Time time ON time.id = jogo.id_time_casa;
+	INSERT INTO Resultado(gols_pro, gols_contra, id_jogo,id_time)
+		SELECT
+			FLOOR(RAND() * 5) AS gols_pro,
+			FLOOR(RAND() * 5) AS gols_contra,
+			jogo.id AS id_jogo,
+			time.id AS id_time
+		FROM
+			Jogo jogo
+		INNER JOIN
+			Time time ON time.id = jogo.id_time_visitante;
+END $$
+DELIMITER ;
+
+
 
 /*INSERT INTO Jogo (id_edicao, id_time_visitante, id_time_casa, dt_jogo)
-VALUES (1,1,2,'2021-01-20');
+VALUES (1,1,2,'2021-01-20');*/
