@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Campeonato (
 
 CREATE TABLE IF NOT EXISTS Edicao (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    ano_edicao VARCHAR(45) NOT NULL,
+    ano_edicao INT NOT NULL,
     dt_inicio DATE NOT NULL,
     dt_fim DATE NOT NULL,
     id_campeonato INT NOT NULL,
@@ -129,6 +129,9 @@ INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '2021-01-20', '2021-02-21', 1);
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '2022-01-20', '2022-02-21', 1);
 
+DROP PROCEDURE IF EXISTS gerar_resultados_aleatórios;
+DROP PROCEDURE IF EXISTS gerar_jogos_campeonato;
+
 DELIMITER $$
 CREATE PROCEDURE gerar_jogos_campeonato ()
 BEGIN
@@ -148,6 +151,9 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+
+
+
 CREATE PROCEDURE gerar_resultados_aleatórios ()
 BEGIN
 	/*INSERINDO OS JOGOS*/
@@ -173,6 +179,10 @@ BEGIN
 			Time time ON time.id = jogo.id_time_visitante;
 END $$
 DELIMITER ;
+
+CALL gerar_jogos_campeonato;
+CALL gerar_resultados_aleatórios;
+
 
 
 

@@ -22,6 +22,9 @@
             if($this->ano_edicao > getFormatedDate()->format('Y')){
                 $errors['ano_edicao'] = "Ano não pode ser maior que o ano atual";
             }
+            if($this->ano_edicao == ""){
+                $errors['ano_edicao'] = "Ano de edição é obrigatório";
+            }
             if($this->dt_inicio == ""){
                 $errors['dt_inicio'] = "Data de inicio é obrigatória";
             }

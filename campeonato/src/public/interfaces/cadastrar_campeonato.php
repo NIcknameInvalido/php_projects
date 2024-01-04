@@ -7,25 +7,45 @@
                 <div class="row">
                     <div class="col-12">
                         <label for="nome">Nome do campeonato</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?= isset($_POST['nome']) ? $_POST['nome'] : "" ?>">
+                        <input type="text" class="form-control <?= isset($errors['nome']) ? 'is-invalid' : '' ?>" id="nome" name="nome" placeholder="Nome" value="<?= isset($_POST['nome']) ? $_POST['nome'] : "" ?>">
+                        <?php if (isset($errors['nome'])) : ?>
+                            <div class="invalid-feedback">
+                                <?= $errors['nome'] ?>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <label for="ano_edicao">Ano da edição</label>
-                        <input type="number" class="form-control" id="ano_edicao" name="ano_edicao" placeholder="ano_edicao" value="<?= isset($_POST['ano_edicao']) ? $_POST['ano_edicao'] : "" ?>">
+                        <input type="number" class="form-control <?= isset($errors['ano_edicao']) ? 'is-invalid' : '' ?>" id="ano_edicao" name="ano_edicao" placeholder="ano_edicao" value="<?= isset($_POST['ano_edicao']) ? $_POST['ano_edicao'] : "" ?>">
+                        <?php if (isset($errors['ano_edicao'])) : ?>
+                            <div class="invalid-feedback">
+                                <?= $errors['ano_edicao'] ?>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <label for="dt_inicio">Data de início</label>
-                        <input type="date" class="form-control" id="dt_inicio" name="dt_inicio" placeholder="DD/MM/AAAA" value="<?= isset($_POST['dt_inicio']) ? $_POST['dt_inicio'] : "" ?>">
+                        <input type="date" class="form-control <?= isset($errors['dt_inicio']) ? 'is-invalid' : '' ?>" id="dt_inicio" name="dt_inicio" placeholder="DD/MM/AAAA" value="<?= isset($_POST['dt_inicio']) ? $_POST['dt_inicio'] : "" ?>">
+                        <?php if (isset($errors['dt_inicio'])): ?>
+                            <div class="invalid-feedback">
+                                <?= $errors['dt_inicio'] ?>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <label for="dt_fim">Data de fim</label>
-                        <input type="date" class="form-control" id="dt_fim" name="dt_fim" placeholder="DD/MM/AAAA" value="<?= isset($_POST['dt_fim']) ? $_POST['dt_fim'] : "" ?>">
+                        <input type="date" class="form-control <?= isset($errors['dt_fim']) ? 'is-invalid' : '' ?>" id="dt_fim" name="dt_fim" placeholder="DD/MM/AAAA" value="<?= isset($_POST['dt_fim']) ? $_POST['dt_fim'] : "" ?>">
+                        <?php if (isset($errors['dt_fim'])): ?>
+                            <div class="invalid-feedback">
+                                <?= $errors['dt_fim'] ?>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 mb-5">Cadastrar</button>
@@ -47,13 +67,13 @@
                 <?php foreach ($edicoes_campeonato as $edi_camp) : ?>
                     <tr>
                         <form action="cadastrar_campeonato.php" method="get">
-                            <input type="hidden" name="ed_id_campeonato" value="<?=$edi_camp['id_campeonato']?>">
+                            <input type="hidden" name="ed_id_campeonato" value="<?= $edi_camp['id_campeonato'] ?>">
                             <td class="col-3">
-                                <fieldset disabled><input type="text" class="form-control" id="nome" name="nome" placeholder="nome" value="<?=$edi_camp['nome_campeonato']?>"></fieldset>
+                                <fieldset disabled><input type="text" class="form-control" id="nome" name="nome" placeholder="nome" value="<?= $edi_camp['nome_campeonato'] ?>"></fieldset>
                             </td>
-                            <td class="col"><input type="number" class="form-control" id="ano_edicao" name="ed_ano_edicao" placeholder="AAAA" value="<?=$edi_camp['ano_edicao']?>"></td>
-                            <td class="col"><input type="date" class="form-control" id="dt_inicio" name="ed_dt_inicio" placeholder="DD/MM/AAAA" value="<?= $edi_camp['dt_inicio']?>"></td>
-                            <td class="col"><input type="date" class="form-control" id="dt_fim" name="ed_dt_fim" placeholder="DD/MM/AAAA" value="<?=$edi_camp['dt_fim']?>"></td>
+                            <td class="col"><input type="number" class="form-control" id="ano_edicao" name="ed_ano_edicao" placeholder="AAAA" value="<?= $edi_camp['ano_edicao'] ?>"></td>
+                            <td class="col"><input type="date" class="form-control" id="dt_inicio" name="ed_dt_inicio" placeholder="DD/MM/AAAA" value="<?= $edi_camp['dt_inicio'] ?>"></td>
+                            <td class="col"><input type="date" class="form-control" id="dt_fim" name="ed_dt_fim" placeholder="DD/MM/AAAA" value="<?= $edi_camp['dt_fim'] ?>"></td>
                             <td class="col">
                                 <button type="submit" class="btn btn-primary">Nova</button>
                             </td>

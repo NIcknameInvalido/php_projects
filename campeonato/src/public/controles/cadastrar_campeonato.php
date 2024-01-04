@@ -23,8 +23,7 @@ if ($_POST) {
     } catch (ValidationException $e) {
         $exception =  $e->getErrors();
     }
-
-    if (isset($camp->id)) {
+    if ($camp->id > 0) {
         try {
             $edicao = new Edicao();
             $edicao->ano_edicao = $_POST['ano_edicao'];
@@ -33,7 +32,7 @@ if ($_POST) {
             $edicao->id_campeonato = $camp->id;
             $edicao->save();
         } catch (ValidationException $e) {
-            array_merge($exception, $e->getErrors());
+            is_null($exception) ? $exception = $e->getErrors() : array_merge($exception, $e->getErrors());
         }
     }
 
@@ -50,4 +49,5 @@ if ($_POST) {
         }
     }
 }
+
 return carregarInterface('cadastrar_campeonato', ['edicoes_campeonato' => $edicoes_campeonato, 'errors' => $exception]);

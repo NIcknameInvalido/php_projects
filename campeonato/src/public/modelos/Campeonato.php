@@ -10,7 +10,7 @@
         public function save(){
             $this->validar();
 
-            parent::save();
+            $this->id = parent::save();
         }
 
         private function validar(){
