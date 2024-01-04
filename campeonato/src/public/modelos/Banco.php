@@ -31,7 +31,7 @@ class Banco
             $stmt = $sql_conn->prepare($sql);
             $valores = array_values($valores);
             $tipos = '';
-            echo $sql . "<br>";
+            
             foreach ($valores as $valor) {
                 if (is_int($valor)) {
                     $tipos .= "i"; // inteiro
@@ -43,11 +43,11 @@ class Banco
                     die("Tipo de parâmetro não suportado.");
                 }
             }
+            
             $stmt->bind_param($tipos, ...$valores);
             $stmt->execute();
             $id = $sql_conn->insert_id;
             $stmt->close();
-
             $sql_conn->close();
             return $id;
         } catch (ValidationException $e) {

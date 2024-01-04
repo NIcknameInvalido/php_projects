@@ -2,12 +2,9 @@
     class Paginacao {
         private $atributos = [];
         private  $totalPaginas;
-
         private $deslocamento;
         public $paginaAtual;
-
         public $limiteInicial;
-
         public $limiteFinal;
 
         public function __construct($limiteItensPorPagina, $maxLinks, $totalElementos, $paginaAtual){
@@ -24,7 +21,6 @@
                 $this->limiteFinal += $maxLinks;
             }
             $this->limiteInicial = $this->limiteFinal - ($maxLinks - 1);
-        
             if($this->limiteFinal > $this->totalPaginas){
                 $this->limiteFinal = $this->totalPaginas;
             }

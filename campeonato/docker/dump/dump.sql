@@ -126,6 +126,7 @@ INSERT INTO Contrato (dt_inicio, dt_fim, id_jogador, id_time) VALUES
 
 
 INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
+INSERT INTO Campeonato (nome) VALUES ('Planaltina Cup');
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2021, '2021-01-20', '2021-02-21', 1);
 INSERT INTO Edicao (ano_edicao,dt_inicio, dt_fim, id_campeonato) VALUES (2022, '2022-01-20', '2022-02-21', 1);
 

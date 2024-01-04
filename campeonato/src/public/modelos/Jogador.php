@@ -17,7 +17,7 @@
         
         private function validar(){
 
-            $ano = (int)date('Y', strtotime($this->dt_nascimento))-(int)date('Y');
+            $ano = (int)date('Y') - (int)date('Y', strtotime($this->dt_nascimento));
             $errors = [];
             if($this->nome == "" || strlen($this->nome) < 2){
                 $errors['nome'] = 'Valor fornecido para nome está incorreto';
@@ -29,7 +29,8 @@
                 $errors['cpf'] = 'Valor fornecido para cpf está incorreto';
             }
             if($this->dt_nascimento == "" || ($ano < 10 || $ano > 50)){
-                $errors['dt_nascimento'] = 'Valor fornecido para data nascimento está incorreto';
+                $errors['dt_nascimento'] = 'Valor fornecido para data de nascimento está incorreto';
+                
             }
             if(count($errors) > 0){
                 throw new ValidationException($errors);

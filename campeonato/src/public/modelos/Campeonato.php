@@ -6,6 +6,27 @@
         ];
         
         protected static $nome_tabela = 'Campeonato';
+
+        public function save(){
+            $this->validar();
+
+            parent::save();
+        }
+
+        private function validar(){
+            $errors = [];
+    
+            if(strlen($this->nome <= 0) || $this->nome == ""){
+                $errors['nome'] = "Nome é obrigatório";
+             }
+             if(count($errors) > 0){
+                throw new ValidationException($errors);
+             }
+        }
+
+        
     }
+
+    
 
 ?>

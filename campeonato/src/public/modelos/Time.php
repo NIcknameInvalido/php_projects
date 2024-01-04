@@ -31,7 +31,6 @@
             if($this->valores['ano_fundacao'] > $ano_atual){
                 $errors['ano_fundacao'] = "Ano não pode ser maior que o ano atual";
             }   
-
             if(count($errors) > 0){
                 throw new ValidationException($errors);
             }

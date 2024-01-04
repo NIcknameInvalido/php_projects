@@ -7,8 +7,9 @@
     define("CONFIGURACOES",  dirname(realpath('../configuracoes')."/configuracoes"));
     define("INTERFACES",  dirname(realpath('../interfaces')."/configuracoes"));
     define("CONTROLES",  dirname(realpath('../controles')."/configuracoes"));
-    define("EXCECOES",  dirname(realpath('../Exceptions')."/configuracoes"));
+    define("EXCECOES",  dirname(realpath('../excecoes')."/configuracoes"));
     
+    include('utilitarios.php');
     include(EXCECOES."/AppException.php");
     include(EXCECOES."/ValidationException.php");
     include(MODELO."/Banco.php");

@@ -19,8 +19,8 @@
         </div>
         <div class="row mb-3">
             <div class="form-group col-12 col-xl-4">
-                <label for="select2" class="form-label fs-5 text-dark">Time da casa</label>
-                <select id="select2" class="form-select form-select-lg" aria-label="Selecione Opção 2" name="id_time_casa">
+                <label for="select" class="form-label fs-5 text-dark">Time da casa</label>
+                <select id="select" class="form-select form-select-lg" aria-label="Selecione Opção 2" name="id_time_casa">
                     <option selected>Selecione o time da casa</option>
                     <?php foreach ($times as $time) : ?>
                         <option value="<?= $time->id ?>"><?= $time->nome . " (" . $time->sigla . ")" ?></option>
@@ -31,7 +31,7 @@
                 <label for="dataInput" class="form-label fs-5 text-dark">Escolha uma data</label>
                 <input type="date" class="form-control form-select-lg" id="dataInput" name="dt_jogo">
             </div>
-            <div class="form-group col-12 col-xl-4">
+            <div class="form-group col-12 col-lg-12 col-xl-4">
                 <label for="select3" class="form-label fs-5 text-dark">Selecione o time visitante</label>
                 <select id="select3" class="form-select form-select-lg" aria-label="Selecione Opção 3" name="id_time_visitante">
                     <option selected>Selecione o time visitante</option>
@@ -41,11 +41,9 @@
                 </select>
             </div>
         </div>
-        <div class="row mb-3">
-        </div>
         <div class="row">
             <div class="col-12">
-                <button type="submit" class="btn-lg btn-primary mt-3">Enviar</button>
+                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
             </div>
         </div>
     </form>
