@@ -1,0 +1,44 @@
+body {
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    padding: 0;
+    margin: 0;
+}
+
+.page{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.card{
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 10);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all linear 190ms;
+    font-size: 1.0em;
+    color: #030303;
+    margin-bottom: 15px;
+}
+
+label{
+    font-size: 1.2em;
+}
+
+
