@@ -27,8 +27,8 @@
                             Times
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../controles/cadastrar_times.php">Cadastrar times</a></li>
-                            <li><a class="dropdown-item" href="../controles/exibir_times.php">Exibir times</a></li>
+                            <li><a class="dropdown-item" href="cadastrar_times.php">Cadastrar times</a></li>
+                            <li><a class="dropdown-item" href="exibir_times.php">Exibir times</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -36,8 +36,8 @@
                             Jogadores
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../controles/cadastrar_jogadores.php">Cadastrar jogadores</a></li>
-                            <li><a class="dropdown-item" href="../controles/exibir_jogadores.php">Gerenciar jogadores</a></li>
+                            <li><a class="dropdown-item" href="cadastrar_jogadores.php">Cadastrar jogadores</a></li>
+                            <li><a class="dropdown-item" href="exibir_jogadores.php">Gerenciar jogadores</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -45,7 +45,7 @@
                             Campeonatos
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../controles/cadastrar_campeonato.php">Cadastrar campeonato</a></li>
+                            <li><a class="dropdown-item" href="cadastrar_campeonato.php">Cadastrar campeonato</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -53,8 +53,8 @@
                             Jogos e resultados
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../controles/cadastrar_jogos.php">Cadastrar jogos</a></li>
-                            <li><a class="dropdown-item" href="../controles/exibir_jogos.php">Registrar resultados</a></li>
+                            <li><a class="dropdown-item" href="cadastrar_jogos.php">Cadastrar jogos</a></li>
+                            <li><a class="dropdown-item" href="exibir_jogos.php">Registrar resultados</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -1,4 +1,3 @@
-<?php require('componentes/cabecalho.php'); ?>
 <div class="col-xl-8 col-lg-12">
     <div class="row">
         <div class="form-group col-12">
@@ -83,4 +82,3 @@
         console.log(novaURL);
     }
 </script>
-<?php require('componentes/rodape.php') ?>

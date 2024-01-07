@@ -20,7 +20,7 @@
         $resultado_time_visitante->save();
 
         if($resultado_time_casa->id > 0 && $resultado_time_visitante->id > 0){
-            header('Location: exibir_jogos.php');
+            carregarInterface('exibir_jogos');
         }
     }
     salvarResultados();

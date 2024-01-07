@@ -1,9 +1,13 @@
-<?php  
-    include('../configuracoes/config.php');
-   
+<?php
+
+    sessao();
+    
+    carregarModelos('Contrato');
+    carregarModelos('Jogador');
+    carregarModelos('Time');
+
     $jogadores_contrato = [];
     $contratos = Contrato::selectAll();
-
     foreach ($contratos as $indice => $contrato){
         $jogador = Jogador::selectOne(['id'=>$contrato->id_jogador]);
         $time = Time::selectOne(['id'=>$contrato->id_time]);
@@ -16,5 +20,5 @@
             'dt_fim' => $contrato->dt_fim, 
             ]);
     }
-    carregarInterface('exibir_jogadores', ['jogadores' => $jogadores_contrato]);
+    carregarTemplateInterface('exibir_jogadores', ['jogadores' => $jogadores_contrato]);
 ?>

@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS Edicao;
 -- Drop Campeonato
 DROP TABLE IF EXISTS Campeonato;
 -- Drop Contrato
+DROP TABLE IF EXISTS Usuario;
+-- Drop Usuario
 DROP TABLE IF EXISTS Contrato;
 -- Drop Jogador
 DROP TABLE IF EXISTS Jogador;
@@ -17,7 +19,13 @@ DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Time;
 
 
-
+CREATE TABLE IF NOT EXISTS Usuario(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+	email VARCHAR (40) NOT NULL UNIQUE,
+    senha VARCHAR (200) NOT NULL,
+    isAdmin BOOLEAN NOT NULL
+);
 CREATE TABLE IF NOT EXISTS Jogador (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -81,7 +89,7 @@ CREATE TABLE IF NOT EXISTS Resultado (
 USE campeonato;
 
 #massa de dados para testes
-
+INSERT INTO Usuario (nome, email, senha, isAdmin) VALUES ('Nikollas Santana', 'nikoll@gmail.com', 'a87a4c61b3a207b9ae8cbd00404164d4', true);
 INSERT INTO Jogador (nome, sobrenome, cpf, dt_nascimento) VALUES
 	('Eduardo', 'Oliveira', '78901234567', '1990-10-15'),
 	('Gustavo', 'Machado', '87654321098', '1987-07-22'),

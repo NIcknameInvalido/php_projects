@@ -1,4 +1,3 @@
-<?php require('componentes/cabecalho.php') ?>
 <div class="row col-12 table-responsive">
     <table class="table">
         <thead>
@@ -24,4 +23,3 @@
             <button type="button" class="btn btn-dark"><a style="text-decoration: none;" class="text-light" href="../controles/cadastrar_times.php" target="_blank">Cadastrar Times</a></button>
     </div>
 </div>
-<?php require('componentes/rodape.php') ?>

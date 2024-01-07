@@ -1,4 +1,3 @@
-<?php require('componentes/cabecalho.php') ?>
 <div class="container-fluid">
     <form class="shadow-lg col-12 col-md-6 mx-auto my-5 p-5" action="../controles/cadastrar_jogos.php" method="post">
         <?php if (isset($jogo_id) && $jogo_id > 0) : ?>
@@ -48,4 +47,3 @@
         </div>
     </form>
 </div>
-<?php require('componentes/rodape.php') ?>

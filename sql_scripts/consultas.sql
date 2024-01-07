@@ -10,7 +10,9 @@ SELECT * FROM Jogo ORDER BY id_time_casa, id_time_visitante ASC;
 SELECT * FROM Edicao;
 
 SELECT * FROM Time;
-
+SELECT * FROM Usuario;
+SELECT * FROM Campeonato;
+SELECT * FROM Usuario WHERE email='nikoll@gmail.com' AND senha='a87a4c61b3a207b9ae8cbd00404164d4';
 SELECT j.id_time_casa, j.id_time_visitante, r.id_jogo, r.gols_pro, r.gols_contra, 
 (SELECT COUNT(*) FROM Resultado as re WHERE re.id_time = 1 AND gols_pro > gols_contra) as 'Vitórias',
 (SELECT COUNT(*) FROM Resultado as re WHERE re.id_time = 1 AND gols_pro < gols_contra) as 'Derrotas',

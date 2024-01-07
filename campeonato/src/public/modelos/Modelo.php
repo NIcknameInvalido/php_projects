@@ -86,6 +86,7 @@ class Modelo
             $sql .= static::formatarFiltros($filtros);
         }
         $resultados = Banco::find($sql);
+
         return $resultados;
     }
     //função para construir um select avançado e obter resultados

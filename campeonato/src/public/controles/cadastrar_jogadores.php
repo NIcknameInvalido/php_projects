@@ -1,6 +1,10 @@
 <?php
-include('../configuracoes/config.php');
 $exception = NULL;
+
+carregarModelos('Time');
+carregarModelos('Jogador');
+carregarModelos('Contrato');
+
 $times = Time::selectAll();
 
 if ($_POST) {
@@ -27,4 +31,4 @@ if ($_POST) {
         }
     }
 }
-carregarInterface('cadastrar_jogadores', ['times' => $times, 'errors' => $exception]);
+carregarTemplateInterface('cadastrar_jogadores', ['times' => $times, 'errors' => $exception]);

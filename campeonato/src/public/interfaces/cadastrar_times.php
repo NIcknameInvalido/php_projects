@@ -1,5 +1,4 @@
- <?php include('componentes/cabecalho.php'); ?>
- <form class="shadow-lg col-6 d-flex align-items-center p-5 " action="../controles/cadastrar_times.php" method="post">
+<form class="shadow-lg col-6 d-flex align-items-center p-5 " action="../controles/cadastrar_times.php" method="post">
      <div class="container mt-4">
          <h1>Cadastro de Time</h1>
          <div class="col-lg-12">
@@ -37,4 +36,3 @@
          </div>
      </div>
  </form>
- <?php include('componentes/rodape.php'); ?>

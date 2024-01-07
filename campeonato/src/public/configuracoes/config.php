@@ -1,40 +1,31 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    
-    define("MODELO", dirname(realpath('../modelos/')."/modelos"));
-    define("CONFIGURACOES",  dirname(realpath('../configuracoes')."/configuracoes"));
-    define("INTERFACES",  dirname(realpath('../interfaces')."/configuracoes"));
-    define("CONTROLES",  dirname(realpath('../controles')."/configuracoes"));
-    define("EXCECOES",  dirname(realpath('../excecoes')."/configuracoes"));
-    
-    include('utilitarios.php');
-    include(EXCECOES."/AppException.php");
-    include(EXCECOES."/ValidationException.php");
-    include(MODELO."/Banco.php");
-    include(MODELO."/Modelo.php");
-    include(MODELO."/Jogador.php");
-    include(MODELO."/Time.php");
-    include(MODELO."/Contrato.php");
-    include(MODELO."/Campeonato.php");
-    include(MODELO."/Edicao.php");
-    include(MODELO."/Resultado.php");
-    include(MODELO."/CampeonatoEdicao.php");
-    include(MODELO."/Jogo.php");
-    include(MODELO."/Partida.php");
-    include(MODELO."/Paginacao.php");
 
-   function carregarInterface($interface, $dados = []){
-        $caminhoArquivo = INTERFACES . "/" . $interface. ".php";
-        
-        if(count($dados) > 0){
-            foreach ($dados as $chave => $valor) {
-                if(strlen($chave)){
-                    ${$chave} = $valor;
-                }
-            };
-        }
-        require_once($caminhoArquivo);
-    }
-?>
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+define("MODELO", realpath(dirname(__FILE__) . '/../modelos'));
+define("CONFIGURACOES", realpath(dirname(__FILE__) . '/../configuracoes'));
+define("INTERFACES",  realpath(dirname(__FILE__) . '/../interfaces'));
+define("COMPONENTES",  realpath(dirname(__FILE__) . '/../interfaces/componentes'));
+define("CONTROLES",  realpath(dirname(__FILE__) . '/../controles'));
+define("EXCECOES",  realpath(dirname(__FILE__) . '/../excecoes'));
+
+require("session.php");
+require('utilitarios.php');
+require(EXCECOES . "/AppException.php");
+require(EXCECOES . "/ValidationException.php");
+require(MODELO . "/Banco.php");
+require(MODELO . "/Modelo.php");
+require('loader.php');
+// require(MODELO . "/Usuario.php");
+// require(MODELO . "/Jogador.php");
+// require(MODELO . "/Time.php");
+// require(MODELO . "/Contrato.php");
+// require(MODELO . "/Campeonato.php");
+// require(MODELO . "/Edicao.php");
+// require(MODELO . "/Resultado.php");
+// require(MODELO . "/CampeonatoEdicao.php");
+// require(MODELO . "/Jogo.php");
+// require(MODELO . "/Partida.php");
+// require(MODELO . "/Paginacao.php");
+

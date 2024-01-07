@@ -1,5 +1,4 @@
 <?php
-include('../configuracoes/config.php');
 
 $messageDelete = NULL;
 $exception = NULL;

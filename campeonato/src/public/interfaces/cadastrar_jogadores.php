@@ -1,5 +1,5 @@
-<?php require('componentes/cabecalho.php') ?>
-<form class="shadow-lg col-xl-6 d-flex align-items-center px-5" action="../controles/cadastrar_jogadores.php" method="post">
+
+<form class="shadow-lg col-xl-6 d-flex align-items-center px-5" action="cadastrar_jogadores.php" method="post">
     <div class="container mt-4">
         <h1 class="">Cadastro de jogadores</h1>
         <div class="col">

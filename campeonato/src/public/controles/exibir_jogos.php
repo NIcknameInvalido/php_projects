@@ -2,7 +2,6 @@
 include('../configuracoes/config.php');
 function carregarJogos($id_camp)
 {
-
     $jogos = Jogo::selectAll('*', ['id_edicao' => $id_camp]);
     $partidas = [];
     $camp =  CampeonatoEdicao::selectOneFromJoin(

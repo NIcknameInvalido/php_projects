@@ -10,7 +10,8 @@
         protected static $nome_tabela = 'Contrato';
 
         public function save(){
-
+            $this->validate();
+            parent::save();
         }
         private function validate(){
             $errors = [];

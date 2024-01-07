@@ -3,7 +3,7 @@ class Banco
 {
     private static function conectarAoBanco()
     {
-        $caminho = dirname(realpath('../modelos/')) . "/env.ini";
+        $caminho = dirname(__FILE__,2) . "/env.ini";
         $configuracoes = parse_ini_file($caminho);
         $sql_conn = new mysqli($configuracoes['host'], $configuracoes['username'], $configuracoes['password'], $configuracoes['dbname']);
         if ($sql_conn->connect_error) {
