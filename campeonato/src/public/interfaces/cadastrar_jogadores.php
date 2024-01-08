@@ -1,5 +1,6 @@
 
-<form class="shadow-lg col-xl-6 d-flex align-items-center px-5" action="cadastrar_jogadores.php" method="post">
+<form class="shadow-lg col-xl-6 d-flex align-items-center px-5" action="index.php" method="post">
+    <input type="hidden" name="route" value="cadastrar_jogadores.php">
     <div class="container mt-4">
         <h1 class="">Cadastro de jogadores</h1>
         <div class="col">
@@ -61,4 +62,3 @@
         </div>
     </div>
 </form>
-<?php include('componentes/rodape.php') ?>

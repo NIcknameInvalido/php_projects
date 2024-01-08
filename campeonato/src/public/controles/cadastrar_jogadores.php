@@ -7,6 +7,8 @@ carregarModelos('Contrato');
 
 $times = Time::selectAll();
 
+var_dump($_POST);
+
 if ($_POST) {
     try {
         $jogador = new Jogador([
@@ -31,4 +33,4 @@ if ($_POST) {
         }
     }
 }
-carregarTemplateInterface('cadastrar_jogadores', ['times' => $times, 'errors' => $exception]);
+carregarTemplateInterface('cadastrar_jogadores', $_POST+['times' => $times, 'errors' => $exception]);
